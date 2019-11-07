@@ -14,7 +14,7 @@ class LeagueActivity : AppCompatActivity() {
         getData()
     }
 
-    fun getData(){
+    private fun getData(){
         val id = resources.getStringArray(R.array.league_id)
         val name = resources.getStringArray(R.array.league_name)
         val desc = resources.getStringArray(R.array.league_desc)
