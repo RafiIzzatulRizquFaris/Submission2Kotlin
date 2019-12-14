@@ -1,6 +1,7 @@
-package com.example.submission2kotlin
+package com.example.submission2kotlin.retrofit
 
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
@@ -12,6 +13,17 @@ class RetrofitClient {
                 retrofit = Retrofit.Builder()
                     .baseUrl(baseURL)
                     .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+            }
+            return retrofit!!
+        }
+
+        fun getClientRXJava(): Retrofit {
+            if (retrofit == null) {
+                retrofit = Retrofit.Builder()
+                    .baseUrl(baseURL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()
             }
             return retrofit!!
