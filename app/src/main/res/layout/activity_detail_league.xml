@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBlue"
-    tools:context=".DetailLeagueActivity">
+    tools:context=".activity.DetailLeagueActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -95,7 +95,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="36dp"
                     android:text="@string/fa_globe_solid"
                     android:textSize="50sp"
                     app:solid_icon="true" />
@@ -130,7 +130,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="35dp"
+                    android:layout_marginEnd="36dp"
                     android:text="@string/fa_facebook"
                     android:textSize="50sp"
                     app:brand_icon="true" />
