@@ -22,4 +22,14 @@ interface UserService {
     fun responseNextLeague(
         @Query("id") id: String
     ): Observable<Events>
+
+    @GET("searchevents.php")
+    fun responseSearch(
+        @Query("e") query: String?
+    ): Observable<Events>
+
+    @GET("lookupevent.php")
+    fun responseDetailEvent(
+        @Query("id") id: String
+    ): Observable<Events>
 }
