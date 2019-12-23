@@ -11,8 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.DetailEventActivity"></activity>
-        <activity android:name=".activity.SearchEventActivity" />
+        <activity android:name=".activity.DetailSearchActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.DetailEventActivity" />
+        </activity>
+        <activity android:name=".activity.DetailEventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.DetailLeagueActivity" />
+        </activity>
+        <activity android:name=".activity.SearchEventActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.DetailLeagueActivity" />
+        </activity>
         <activity android:name=".activity.DetailLeagueActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
