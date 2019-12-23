@@ -1,6 +1,7 @@
 package com.example.submission2kotlin.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 data class Events(
@@ -43,7 +44,7 @@ data class Event(
     var strFanart: String?,
     var strFilename: String?,
     var strHomeFormation: String?,
-    var strHomeGoalDetails: String?,
+    @SerializedName("strHomeGoalDetails") var strHomeGoalDetails: String?,
     var strHomeLineupDefense: String?,
     var strHomeLineupForward: String?,
     var strHomeLineupGoalkeeper: String?,
