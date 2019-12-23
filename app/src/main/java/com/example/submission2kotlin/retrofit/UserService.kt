@@ -1,9 +1,7 @@
 package com.example.submission2kotlin.retrofit
 
-import com.example.submission2kotlin.model.Events
+import com.example.submission2kotlin.model.*
 import io.reactivex.Observable
-import okhttp3.ResponseBody
-import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -11,7 +9,7 @@ interface UserService {
     @GET("lookupleague.php")
     fun responseDetailLeague(
         @Query("id") id: Int
-    ): Call<ResponseBody?>?
+    ): Observable<DetailLeague>
 
     @GET("eventspastleague.php")
     fun responsePastLeague(
@@ -25,11 +23,16 @@ interface UserService {
 
     @GET("searchevents.php")
     fun responseSearch(
-        @Query("e") query: String?
-    ): Observable<Events>
+        @Query("e") query: String
+    ): Observable<SearchEvents>
 
     @GET("lookupevent.php")
     fun responseDetailEvent(
         @Query("id") id: String
-    ): Observable<Events>
+    ): Observable<DetailEvents>
+
+    @GET("lookupteam.php")
+    fun responseTeam(
+        @Query("id") id:String
+    ) : Observable<DetailTeam>
 }
