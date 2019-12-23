@@ -10,16 +10,16 @@ import io.reactivex.schedulers.Schedulers
 
 class SearchMatchPresenter(val view: SearchMatchContract.View) : SearchMatchContract.Presenter {
     override fun getSearchMatch(strQuery: String?) {
-        Log.e("TAG", strQuery)
+        Log.e("TAG", strQuery.toString())
         val retrofit = RetrofitClient.getClient()
             .create(UserService::class.java)
         CompositeDisposable().add(
-            retrofit.responseSearch(strQuery)
+            retrofit.responseSearch(strQuery.toString())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                        view.setSearchMatch(it.events)
+                        view.setSearchMatch(it.searchevent)
                     }, { error -> Log.e("Error", error.message) }
                 )
         )
