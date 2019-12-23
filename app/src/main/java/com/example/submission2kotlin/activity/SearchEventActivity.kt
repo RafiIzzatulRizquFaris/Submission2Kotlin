@@ -5,10 +5,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submission2kotlin.R
-import com.example.submission2kotlin.adapter.AdapterNextEvent
+import com.example.submission2kotlin.adapter.AdapterSearchEvent
 import com.example.submission2kotlin.contract.SearchMatchContract
 import com.example.submission2kotlin.gone
-import com.example.submission2kotlin.model.Event
+import com.example.submission2kotlin.model.SearchEvent
 import com.example.submission2kotlin.presenter.SearchMatchPresenter
 import kotlinx.android.synthetic.main.activity_search_event.*
 import org.jetbrains.anko.startActivity
@@ -16,29 +16,29 @@ import org.jetbrains.anko.startActivity
 class SearchEventActivity : AppCompatActivity(), SearchMatchContract.View {
 
     private lateinit var mPresenter: SearchMatchPresenter
-    private var matchLists: MutableList<Event> = mutableListOf()
+    private var matchLists: MutableList<SearchEvent> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_event)
         mPresenter = SearchMatchPresenter(this)
         val strQuery = intent?.getStringExtra("query_event")
-        supportActionBar!!.title = strQuery
+        supportActionBar!!.title = "Result For : $strQuery"
         rv_search_match.layoutManager = LinearLayoutManager(this)
         rv_search_match.setHasFixedSize(true)
-        rv_search_match.adapter = AdapterNextEvent(applicationContext!!, matchLists) {
-            startActivity<DetailEventActivity>("Detail" to it)
+        rv_search_match.adapter = AdapterSearchEvent(applicationContext!!, matchLists) {
+            startActivity<DetailSearchActivity>("detail_search" to it)
         }
         mPresenter.getSearchMatch(strQuery!!)
         Toast.makeText(this, strQuery, Toast.LENGTH_LONG).show()
     }
 
-    override fun setSearchMatch(matchList: List<Event>) {
-        if (matchList.isNotEmpty()) {
+    override fun setSearchMatch(listMatch: List<SearchEvent>?) {
+        if(listMatch!!.isNotEmpty()) {
             matchLists.clear()
-            matchLists.addAll(matchList)
+            matchLists.addAll(listMatch)
             rv_search_match.adapter!!.notifyDataSetChanged()
             pg_search_match.gone()
-        } else Toast.makeText(applicationContext, "List is not Empty", Toast.LENGTH_LONG).show()
+        }
     }
 }
