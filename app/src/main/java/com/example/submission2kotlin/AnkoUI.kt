@@ -26,7 +26,7 @@ class LeagueActivityUI : AnkoComponent<LeagueActivity> {
 }
 
 class ListUI : AnkoComponent<Context> {
-    lateinit var image: ImageView
+    private lateinit var image: ImageView
     lateinit var name: TextView
     override fun createView(ui: AnkoContext<Context>): View = with(ui) {
         cardView {
